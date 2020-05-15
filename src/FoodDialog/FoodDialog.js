@@ -64,9 +64,18 @@ export const ConfirmButton = styled(title)`
   background-color: ${pizzaRed};
 `;
 
-export function FoodDialog({ openFood, setOpenFood }) {
+export function FoodDialog({ openFood, setOpenFood, setOrders, orders }) {
   function close() {
     setOpenFood();
+  }
+
+  const order = {
+    ...openFood,
+  };
+
+  function addToOrder() {
+    setOrders([...orders, order]);
+    close();
   }
 
   return openFood ? (
@@ -78,7 +87,7 @@ export function FoodDialog({ openFood, setOpenFood }) {
         </DialogBanner>
         <DialogContent></DialogContent>
         <DialogFooter>
-          <ConfirmButton>Add to order</ConfirmButton>
+          <ConfirmButton onClick={addToOrder}>Add to order</ConfirmButton>
         </DialogFooter>
       </Dialog>
     </>

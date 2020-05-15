@@ -20,13 +20,35 @@ const OrderStyled = styled.div`
 `;
 const OrderContent = styled(DialogContent)`
   padding: 20px;
+  height: 100%;
 `;
 
-export function Order() {
+const OrderContainer = styled.div`
+  padding: 10px 0px;
+  border-bottom: 1px solid grey;
+`;
+
+const OrderItem = styled.div`
+  padding: 10px 0px;
+`;
+
+export function Order({ orders }) {
   return (
     <>
       <OrderStyled>
-        <OrderContent>no orders yet</OrderContent>
+        {orders.length === 0 ? (
+          <OrderContent>no orders yet</OrderContent>
+        ) : (
+          <OrderContent>
+            {" "}
+            <OrderContainer>Your Order:</OrderContainer> {""}
+            {orders.map((order) => (
+              <OrderContainer>
+                <OrderItem>{order.name}</OrderItem>
+              </OrderContainer>
+            ))}
+          </OrderContent>
+        )}
         <DialogFooter>
           <ConfirmButton>Checkout</ConfirmButton>
         </DialogFooter>

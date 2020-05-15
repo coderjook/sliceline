@@ -13,7 +13,7 @@ export function Menu({ setOpenFood }) {
     <MenuStyled>
       {Object.entries(foods).map(([sectionName, foods]) => (
         <>
-          <h1>{sectionName}</h1>
+          <h1> {sectionName} </h1>
           <FoodGrid>
             {foods.map((food) => (
               <Food
@@ -22,10 +22,11 @@ export function Menu({ setOpenFood }) {
                   setOpenFood(food);
                 }}
               >
-                <FoodLabel>{food.name}</FoodLabel>
+                <FoodLabel>
+                  <div>{food.name}</div>
+                </FoodLabel>
               </Food>
             ))}
-            ;
           </FoodGrid>
         </>
       ))}
